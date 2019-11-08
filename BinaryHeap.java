@@ -1,4 +1,6 @@
 public class BinaryHeap {
+
+
     int a[];
     int size;
 
@@ -15,7 +17,7 @@ public class BinaryHeap {
         a[size++] = v;
         int child = size-1;
         int parent = (child-1)/2;
-        while(a[parent] > a[child])
+        while(parent >= 0 && a[parent] > a[child])
         {
             int temp = a[parent];
             a[parent] = a[child];
@@ -33,13 +35,11 @@ public class BinaryHeap {
         return removed;
     }
 
-    public void siftDown(int pos)
-    {
-        int child = 2 * pos+1;
-        if (child+1 < size && a[child] < a[child+1])
+    public void siftDown(int pos) {
+        int child = 2 * pos + 1;
+        if (child + 1 < size && a[child] > a[child + 1])
             ++child;
-        if (a[pos] < a[child])
-        {
+        if (a[pos] < a[child]) {
             int temp = a[pos];
             a[pos] = a[child];
             a[child] = temp;
