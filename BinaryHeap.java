@@ -35,16 +35,19 @@ public class BinaryHeap {
         return removed;
     }
 
-    public void siftDown(int pos) {
+    public void siftDown(int pos)
+    {
         int child = 2 * pos + 1;
         if (child + 1 < size && a[child] > a[child + 1])
             ++child;
-        if (a[pos] < a[child]) {
-            int temp = a[pos];
-            a[pos] = a[child];
-            a[child] = temp;
-            siftDown(child);
-        }
+        if (child <= size)
+            if (a[pos] > a[child])
+            {
+                int temp = a[pos];
+                a[pos] = a[child];
+                a[child] = temp;
+                siftDown(child);
+            }
     }
 
     public void growArray()
@@ -53,5 +56,34 @@ public class BinaryHeap {
         for (int index=0; index < a.length; index++)
             temp[index] = a[index];
         a = temp;
+    }
+
+    public static void main(String[] args)
+    {
+        BinaryHeap heap = new BinaryHeap();
+        heap.add(15);
+        heap.add(10);
+        heap.add(20);
+        heap.add(8);
+        heap.add(283);
+        heap.add(1);
+        heap.add(1231);
+        heap.add(282);
+        heap.add(746);
+        heap.add(1123);
+        heap.add(84);
+        heap.add(2);
+        System.out.println(heap.remove());
+        System.out.println(heap.remove());
+        System.out.println(heap.remove());
+        System.out.println(heap.remove());
+        System.out.println(heap.remove());
+        System.out.println(heap.remove());
+        System.out.println(heap.remove());
+        System.out.println(heap.remove());
+        System.out.println(heap.remove());
+        System.out.println(heap.remove());
+        System.out.println(heap.remove());
+        System.out.println(heap.remove());
     }
 }
